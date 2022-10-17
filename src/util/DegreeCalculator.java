@@ -1,6 +1,7 @@
 package util;
 
 import tree.Tree;
+import utils.Position;
 
 /**
  *
@@ -9,6 +10,21 @@ import tree.Tree;
 public class DegreeCalculator {
 
     public int calculate(Tree <?> t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.        
+        if (t.isEmpty()) {
+            return 0;
+        } else {
+            int max = -99;
+
+            for (Position p: t) {
+                int contador = 0;
+                for(Object hijo: t.children(p)) {
+                    contador++;
+                }
+                if (contador > max) {
+                    max = contador;
+                }
+            }
+            return max;
+        }
     }
 }
